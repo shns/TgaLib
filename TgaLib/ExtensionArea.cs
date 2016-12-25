@@ -138,10 +138,6 @@ namespace TgaLib
         /// </param>
         /// <param name="extensionAreaOffset">An extension area offset.</param>
         /// <exception cref="InvalidOperationException">
-        /// <paramref name="reader"/>のベースストリームがSeekをサポートしない場合にスローする。
-        /// (拡張エリアはデータの途中に存在するため)
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
         /// Throws if a base stream of <paramref name="reader"/> doesn't support Seek,
         /// because extension area exists in the position specified an extension area offset in the footer.
         /// </exception>

@@ -36,6 +36,11 @@ namespace TgaLib
         public byte[] ImageBytes { get; set; }
 
         /// <summary>
+        /// Gets or sets a developer area.
+        /// </summary>
+        public DeveloperArea DeveloperArea { get; set; }
+
+        /// <summary>
         /// Gets or sets an extension area.
         /// </summary>
         public ExtensionArea ExtensionArea { get; set; }
@@ -76,6 +81,11 @@ namespace TgaLib
                 if (Footer.ExtensionAreaOffset != 0)
                 {
                     ExtensionArea = new ExtensionArea(reader, Footer.ExtensionAreaOffset);
+                }
+
+                if (Footer.DeveloperDirectoryOffset != 0)
+                {
+                    DeveloperArea = new DeveloperArea(reader, Footer.DeveloperDirectoryOffset);
                 }
             }
         }

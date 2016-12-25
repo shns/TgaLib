@@ -45,6 +45,8 @@
     <Compile Include="BinaryReaderExtension.cs" />
     <Compile Include="BitsExtractor.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DeveloperArea.cs" />
+    <Compile Include="DeveloperField.cs" />
     <Compile Include="ExtensionArea.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="Header.cs" />

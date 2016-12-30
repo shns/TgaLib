@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TgaLib")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library to decode TARGA image format.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("shns")]
 [assembly: AssemblyProduct("TgaLib")]
 [assembly: AssemblyCopyright("Copyright © 2016 shns")]
 [assembly: AssemblyTrademark("")]

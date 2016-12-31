@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/shns/TgaLib/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/shns/TgaLib</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2016 shns</copyright>
+    <tags>tga targa</tags>
+  </metadata>
+  <files>
+    <file src="..\TgaLib.net45\bin\Release\TgaLib.dll" target="lib\net45" />
+    <file src="..\TgaLib.net451\bin\Release\TgaLib.dll" target="lib\net451" />
+    <file src="..\TgaLib.net452\bin\Release\TgaLib.dll" target="lib\net452" />
+    <file src="..\TgaLib.net46\bin\Release\TgaLib.dll" target="lib\net46" />
+    <file src="..\TgaLib.net461\bin\Release\TgaLib.dll" target="lib\net461" />
+  </files>
+</package>

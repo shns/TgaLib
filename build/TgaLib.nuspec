@@ -14,6 +14,7 @@
     <tags>tga targa</tags>
   </metadata>
   <files>
+    <file src="..\TgaLib\bin\Release\TgaLib.dll" target="lib\net40" />
     <file src="..\TgaLib.net45\bin\Release\TgaLib.dll" target="lib\net45" />
     <file src="..\TgaLib.net451\bin\Release\TgaLib.dll" target="lib\net451" />
     <file src="..\TgaLib.net452\bin\Release\TgaLib.dll" target="lib\net452" />

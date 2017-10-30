@@ -71,9 +71,7 @@ namespace TgaLib
             ColorMap = new byte[Header.ColorMapLength * bytesPerPixel];
             reader.Read(ColorMap, 0, ColorMap.Length);
 
-            ImageBytes = new byte[Header.Width * Header.Height * bytesPerPixel];
-            ReadImageBytes(reader);
-
+            var position = reader.BaseStream.Position;
             if (Footer.HasFooter(reader))
             {
                 Footer = new Footer(reader);
@@ -88,6 +86,10 @@ namespace TgaLib
                     DeveloperArea = new DeveloperArea(reader, Footer.DeveloperDirectoryOffset);
                 }
             }
+
+            reader.BaseStream.Seek(position, SeekOrigin.Begin);
+            ImageBytes = new byte[Header.Width * Header.Height * bytesPerPixel];
+            ReadImageBytes(reader);
         }
 
         #endregion  // constructors
@@ -366,9 +368,7 @@ namespace TgaLib
                         string.Format("Image type \"{0}({1})\" isn't supported.", Header.ImageType, ImageTypes.ToFormattedText(Header.ImageType)));
             }
 
-            // Overwrite an alpha with 0xFF, when the color depth has an alpha value,
-            // but an alpha bits is not specified in the header.
-            if (HasAlpha() && IgnoreAlpha())
+            if (!HasAlpha() && (GetPixelFormat() == PixelFormats.Bgra32))
             {
                 pixelData[ArgbOffset.Alpha] = 0xFF;
             }
@@ -408,24 +408,15 @@ namespace TgaLib
         /// </returns>
         private bool HasAlpha()
         {
-            return GetBytesPerPixel() == 4;
-        }
+            bool hasAlpha = (Header.AttributeBits == 8) || (GetPixelFormat() == PixelFormats.Bgra32);
 
-        /// <summary>
-        /// Gets whether ignore an alpha value or not.
-        /// </summary>
-        /// <returns>
-        /// Returns true, if an alpha value should be ignored.
-        /// Returns false, if an alpha value shouldn't be ignored.
-        /// </returns>
-        private bool IgnoreAlpha()
-        {
-            if (!HasAlpha())
+            if (ExtensionArea != null)
             {
-                throw new InvalidOperationException("Image don't have an alpha value.");
+                hasAlpha = (ExtensionArea.AttributesType == AttributeTypes.HasAlpha) ||
+                           (ExtensionArea.AttributesType == AttributeTypes.HasPreMultipliedAlpha);
             }
 
-            return (Header.AttributeBits != 0);
+            return hasAlpha;
         }
 
         /// <summary>

@@ -13,6 +13,16 @@ namespace TgaLib
     /// </summary>
     public class TgaImage
     {
+        #region fields
+
+        /// <summary>
+        /// Use the alpha channel forcefully, if true.
+        /// </summary>
+        private bool useAlphaChannelForcefully_;
+
+        #endregion  // fields
+
+
         #region properties
 
         /// <summary>
@@ -59,8 +69,19 @@ namespace TgaLib
         /// Constructor.
         /// </summary>
         /// <param name="reader">A binary reader that contains TGA file. Caller must dipose the binary reader.</param>
-        public TgaImage(BinaryReader reader)
+        public TgaImage(BinaryReader reader) : this(reader, false)
         {
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="reader">A binary reader that contains TGA file. Caller must dipose the binary reader.</param>
+        /// <param name="useAlphaChannelForcefully">Use the alpha channel forcefully, if true.</param>
+        public TgaImage(BinaryReader reader, bool useAlphaChannelForcefully)
+        {
+            useAlphaChannelForcefully_ = useAlphaChannelForcefully;
+
             Header = new Header(reader);
 
             ImageID = new byte[Header.IDLength];
@@ -368,7 +389,7 @@ namespace TgaLib
                         string.Format("Image type \"{0}({1})\" isn't supported.", Header.ImageType, ImageTypes.ToFormattedText(Header.ImageType)));
             }
 
-            if (!HasAlpha() && (GetPixelFormat() == PixelFormats.Bgra32))
+            if (!HasAlpha() && !useAlphaChannelForcefully_ && (GetPixelFormat() == PixelFormats.Bgra32))
             {
                 pixelData[ArgbOffset.Alpha] = 0xFF;
             }

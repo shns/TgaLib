@@ -20,5 +20,6 @@
     <file src="..\TgaLib.net452\bin\Release\TgaLib.dll" target="lib\net452" />
     <file src="..\TgaLib.net46\bin\Release\TgaLib.dll" target="lib\net46" />
     <file src="..\TgaLib.net461\bin\Release\TgaLib.dll" target="lib\net461" />
+    <file src="..\TgaLib.net472\bin\Release\TgaLib.dll" target="lib\net472" />
   </files>
 </package>

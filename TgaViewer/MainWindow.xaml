@@ -24,35 +24,43 @@
       <TextBlock Text="{Binding Path=OpenedFile}"/>
     </StatusBar>
 
-    <Viewbox Stretch="Uniform">
-      <Border>
-        <Border.Background>
-          <DrawingBrush Viewport="0,0,20,20" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
-            <DrawingBrush.Drawing>
-              <DrawingGroup>
-                <GeometryDrawing Brush="#FFFFFF">
-                  <GeometryDrawing.Geometry>
-                    <GeometryGroup>
-                      <RectangleGeometry Rect="0,0,10,10"/>
-                      <RectangleGeometry Rect="10,10,10,10"/>
-                    </GeometryGroup>
-                  </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-                <GeometryDrawing Brush="#BFBFBF">
-                  <GeometryDrawing.Geometry>
-                    <GeometryGroup>
-                      <RectangleGeometry Rect="10,0,10,10"/>
-                      <RectangleGeometry Rect="0,10,10,10"/>
-                    </GeometryGroup>
-                  </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-              </DrawingGroup>
-            </DrawingBrush.Drawing>
-          </DrawingBrush>
-        </Border.Background>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
 
-        <Image Source="{Binding Path=ImageSource}"/>
-      </Border>
-    </Viewbox>
+      <CheckBox Grid.Row="0" IsChecked="{Binding Path=UseAlphaChannelForcibly}">Use alpha channel forcibly.</CheckBox>
+      <Viewbox Grid.Row="1" Stretch="Uniform">
+        <Border>
+          <Border.Background>
+            <DrawingBrush Viewport="0,0,20,20" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
+              <DrawingBrush.Drawing>
+                <DrawingGroup>
+                  <GeometryDrawing Brush="#FFFFFF">
+                    <GeometryDrawing.Geometry>
+                      <GeometryGroup>
+                        <RectangleGeometry Rect="0,0,10,10"/>
+                        <RectangleGeometry Rect="10,10,10,10"/>
+                      </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                  </GeometryDrawing>
+                  <GeometryDrawing Brush="#BFBFBF">
+                    <GeometryDrawing.Geometry>
+                      <GeometryGroup>
+                        <RectangleGeometry Rect="10,0,10,10"/>
+                        <RectangleGeometry Rect="0,10,10,10"/>
+                      </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                  </GeometryDrawing>
+                </DrawingGroup>
+              </DrawingBrush.Drawing>
+            </DrawingBrush>
+          </Border.Background>
+
+          <Image Source="{Binding Path=ImageSource}"/>
+        </Border>
+      </Viewbox>
+    </Grid>
   </DockPanel>
 </Window>

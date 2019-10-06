@@ -30,6 +30,11 @@ namespace TgaViewer
         private ICommand exitCommand_;
 
         /// <summary>
+        /// 強制的にアルファチャネルを使用するか。
+        /// </summary>
+        private bool useAlphaChannelForcibly_;
+
+        /// <summary>
         /// 表示画像。
         /// </summary>
         private BitmapSource imageSource_;
@@ -80,6 +85,15 @@ namespace TgaViewer
         }
 
         /// <summary>
+        /// アルファチャネルを強制的に使用するか?を取得、設定する。
+        /// </summary>
+        public bool UseAlphaChannelForcibly
+        {
+            get { return useAlphaChannelForcibly_; }
+            set { Set(nameof(UseAlphaChannelForcibly), ref useAlphaChannelForcibly_, value); }
+        }
+
+        /// <summary>
         /// 表示画像を取得、設定する。
         /// </summary>
         public BitmapSource ImageSource
@@ -118,7 +132,7 @@ namespace TgaViewer
                 using (var fs = new FileStream(message.FileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                 using (var reader = new BinaryReader(fs))
                 {
-                    var tga = new TgaImage(reader);
+                    var tga = new TgaImage(reader, UseAlphaChannelForcibly);
                     ImageSource = tga.GetBitmap();
                 }
                 OpenedFile = message.FileName;

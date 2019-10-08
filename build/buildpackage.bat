@@ -38,7 +38,7 @@ for /f "usebackq tokens=*" %%i in (`%runps% "%descriptionpsscript%"`) do (
 	set description=%%i
 )
 
-set nuget=..\packages\NuGet.CommandLine.3.4.4-rtm-final\tools\NuGet.exe
+set nuget=..\packages\NuGet.CommandLine.5.2.0\tools\NuGet.exe
 %nuget% pack .\TgaLib.nuspec ^
 -properties id=!id!;version="!version!";title=!id!;author=!author!;description="!description!" ^
 -Prop Configuration=Release

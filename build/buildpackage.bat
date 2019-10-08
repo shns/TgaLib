@@ -7,7 +7,7 @@ set msbuilddir=%PROGRAMFILES%
 :x64
 
 rem rebuild solution
-"%msbuilddir%\MSBuild\14.0\Bin\MSBuild.exe" ..\TgaLib.sln /t:Rebuild /p:Configuration=Release
+"%msbuilddir%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" ..\TgaLib.sln /t:Rebuild /p:Configuration=Release
 
 setlocal enabledelayedexpansion
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
   In App.xaml:
   <Application.Resources>
       <vm:ViewModelLocator xmlns:vm="clr-namespace:TgaViewer"

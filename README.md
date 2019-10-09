@@ -1,4 +1,4 @@
-# TgaLib
+﻿# TgaLib
 --------
 TgaLib is a library to decode TARGA image format.
 

@@ -367,6 +367,10 @@ namespace TgaLib
                         var paletteIndex = GetPaletteIndex(rawPixelData);
                         var bytesPerPixel = GetBytesPerPixel();
                         var realPixelData = new byte[bytesPerPixel];
+                        if ((Header.ColorMapStart + paletteIndex) * bytesPerPixel + bytesPerPixel > ColorMap.Length)
+                        {
+                            return realPixelData;
+                        }
                         Array.Copy(ColorMap,
                                    (Header.ColorMapStart + paletteIndex) * bytesPerPixel,
                                    realPixelData,
